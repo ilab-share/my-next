@@ -19,8 +19,8 @@ export default async function ServerComponent(props: Props) {
   async function handleForm(formData: FormData) {
     "use server"; // Next.js のサーバーアクション
 
-    const str1 = formData.get("str1").toString() || "";
-    const str2 = formData.get("str2").toString() || "";
+    const str1 = (formData.get("str1") as string) ?? ""; // Type assertion needed
+    const str2 = (formData.get("str2") as string) ?? ""; // Type assertion needed
     let result:string = `${str1} ${str2}`.trim();
     console.log(result);
 
